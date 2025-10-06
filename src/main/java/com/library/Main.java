@@ -1,13 +1,22 @@
-<<<<<<< HEAD
 package com.library;
 
 import com.library.controller.LibraryController;
-import com.library.dao.BookDAOImpl;
+import com.library.model.dao.BookDAO;
+import com.library.model.dao.BookDAOImpl;
 import com.library.view.LibraryView;
-=======
-package main.java.com.library;
->>>>>>> 6e4e43a0135dbc373fba33072409de133beb9bfb
 
 public class Main {
-	
+    public static void main(String[] args) {
+        // Crear instancia del DAO
+        BookDAO bookDAO = new BookDAOImpl();
+        
+        // Crear instancia del controlador
+        LibraryController controller = new LibraryController(bookDAO);
+        
+        // Crear instancia de la vista
+        LibraryView view = new LibraryView(controller);
+        
+        // Iniciar la aplicación
+        view.start();
+    }
 }

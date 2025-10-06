@@ -1,33 +1,42 @@
 package com.library.dao;
 
-import io.github.cdimascio.dotenv.Dotenv;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.Properties;
 
 public class DatabaseConnection {
-    private static final String URL = "DB_URL";
-    private static final String USER = "DB_USER";
-    private static final String PASS = "DB_PASS";
-    private static Connection connection;
+    private static String URL;
+    private static String USER;
+    private static String PASS;
 
-    public static Connection init(){
-        try{
+    static {
+        try {
+            Properties props = new Properties();
+            InputStream input = DatabaseConnection.class.getClassLoader()
+                    .getResourceAsStream("database.properties");
+            
+            if (input == null) {
+                System.out.println("No se pudo encontrar database.properties");
+            } else {
+                props.load(input);
+                URL = props.getProperty("db.url");
+                USER = props.getProperty("db.user");
+                PASS = props.getProperty("db.password");
+            }
+        } catch (IOException e) {
+            System.out.println("Error al cargar configuración: " + e.getMessage());
+        }
+    }
+
+    public static Connection init() {
+        Connection connection = null;
+        try {
             connection = DriverManager.getConnection(URL, USER, PASS);
-            System.out.println("Conexión exitosa");
-        } catch(Exception e){
-            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error al conectar: " + e.getMessage());
         }
         return connection;
     }
-
-    public static void close(){
-        try{
-            connection.close();
-            System.out.println("Desconexión exitosa");
-        } catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
-
-
 }
