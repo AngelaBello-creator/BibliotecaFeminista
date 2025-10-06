@@ -1,7 +1,8 @@
-package com.library.view;
+package main.java.com.library.view;
 
-import com.library.controller.LibraryController;
-import com.library.model.Book;
+
+import main.java.com.library.controller.LibraryController;
+import main.java.com.library.model.Book;
 
 import java.util.List;
 import java.util.Scanner;

@@ -1,48 +1,48 @@
-package com.library.controller;
+package main.java.com.library.controller;
 
-import com.library.model.dao.BookDAO;
-import com.library.model.entities.Book;
+import main.java.com.library.dao.BookDao;
+import main.java.com.library.model.Book;
 
 import java.util.List;
 
 public class LibraryController {
 
-    private final BookDAO bookDAO;
+    private final BookDao BookDao;
 
-    public LibraryController(BookDAO bookDAO) {
-        this.bookDAO = bookDAO;
+    public LibraryController(BookDao BookDao) {
+        this.BookDao = BookDao;
     }
 
     public void addBook(Book book) {
-        bookDAO.insert(book);
+        BookDao.insert(book);
     }
 
     public List<Book> getAllBooks() {
-        return bookDAO.findAll();
+        return BookDao.findAll();
     }
 
     public Book getBookById(int id) {
-        return bookDAO.findById(id);
+        return BookDao.findById(id);
     }
 
     public List<Book> searchBooksByTitle(String title) {
-        return bookDAO.findByTitle(title);
+        return BookDao.findByTitle(title);
     }
 
     public List<Book> searchBooksByAuthor(String author) {
-        return bookDAO.findByAuthor(author);
+        return BookDao.findByAuthor(author);
     }
 
     public List<Book> searchBooksByGenre(String genre) {
-        return bookDAO.findByGenre(genre);
+        return BookDao.findByGenre(genre);
     }
 
     public void updateBook(Book book) {
-        bookDAO.update(book);
+        BookDao.update(book);
     }
 
     public void deleteBook(int id) {
-        bookDAO.delete(id);
+        BookDao.delete(id);
     }
 
     private void validateBook(Book book) {
@@ -56,7 +56,7 @@ public class LibraryController {
 
 public void addBook(Book book) {
     validateBook(book);
-    bookDAO.insert(book);
+    BookDao.insert(book);
 }
 
 }

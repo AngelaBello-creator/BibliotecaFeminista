@@ -1,8 +1,10 @@
-package com.library.dao;
+package main.java.com.library.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import com.library.dao.DatabaseConnection;
+import main.java.com.library.dao.DatabaseConnection;
+
+import main.java.com.library.model.Book;
 
 
 public class BookDAOImpl implements BookDao {
@@ -10,7 +12,7 @@ public class BookDAOImpl implements BookDao {
     private PreparedStatement stmn;
 
     @Override
-    public void createBook(Book book){
+    public void addBook(Book book){
         try{
             connection = DatabaseConnection.init();
             String sql = "INSERT INTO books(title, author, description, isbn, genre) VALUES(?, ?, ?, ?, ?)";
