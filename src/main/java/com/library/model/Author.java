@@ -1,4 +1,4 @@
-package com.library.model.entities;
+package com.library.model;
 
 public class Author {
     private Integer id;

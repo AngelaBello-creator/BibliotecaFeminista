@@ -94,7 +94,7 @@ private void showBooks() {
         System.out.print("Nuevo título: ");
         String newTitle = scanner.nextLine();
 
-        controller.updateBook(id, newTitle);
+        controller.updateBook(Book);
         System.out.println(" Libro actualizado");
     }
 

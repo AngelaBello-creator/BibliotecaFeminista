@@ -1,7 +1,9 @@
-package com.library.model.entities;
+package com.library.model;
+
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Book {
     private Integer id;

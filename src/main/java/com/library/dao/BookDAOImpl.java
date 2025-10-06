@@ -3,9 +3,10 @@ package com.library.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import com.library.dao.DatabaseConnection;
+import com.library.model.Book;
 
 
-public class BookDAOImpl implements BookDao {
+public class BookDAOImpl implements BookDAO {
     private Connection connection;
     private PreparedStatement stmn;
 

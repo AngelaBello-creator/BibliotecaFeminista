@@ -1,5 +1,7 @@
-package main.java.com.library.dao;
+package com.library.dao;
 
-public interface BookDao {
+import com.library.model.Book;
+
+public interface BookDAO {
     public void createBook(Book book);
 }
