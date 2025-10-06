@@ -49,20 +49,21 @@ public class LibraryView {
         } while (option != 0);
     }
 
-    private void showBooks() {
-        List<Book> books = controller.getAllBooks();
-        if (books.isEmpty()) {
-            System.out.println("No hay libros registrados.");
-        } else {
-            for (Book b : books) {
-               
-                System.out.println("Título: " + b.getTitle() +
-                                   ", Autor: " + b.getAuthor() +
-                                   ", ISBN: " + b.getIsbn() +
-                                   ", Género: " + b.getGenre());
-            }
+private void showBooks() {
+    List<Book> books = controller.getAllBooks();
+    if (books.isEmpty()) {
+        System.out.println("No hay libros registrados.");
+    } else {
+        for (Book b : books) {
+            System.out.println("ID: " + b.getId() +
+                               ", Título: " + b.getTitle() +
+                               ", Autor: " + b.getAuthor() +
+                               ", ISBN: " + (b.getIsbn() != null ? b.getIsbn() : "N/A") +
+                               ", Género: " + b.getGenre());
         }
     }
+}
+
 
     private void addBook() {
         System.out.print("Título: ");
@@ -86,19 +87,24 @@ public class LibraryView {
     }
 
     private void editBook() {
-        System.out.print("Introduce el ISBN del libro a editar: ");
-        String isbn = scanner.nextLine();
+        System.out.print("Introduce el ID del libro a editar: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); 
+
         System.out.print("Nuevo título: ");
         String newTitle = scanner.nextLine();
 
-        controller.updateBook(isbn, newTitle);
+        controller.updateBook(id, newTitle);
         System.out.println(" Libro actualizado");
     }
 
+
     private void deleteBook() {
-        System.out.print("Introduce el ISBN del libro a eliminar: ");
-        String isbn = scanner.nextLine();
-        controller.deleteBook(isbn);
+        System.out.print("Introduce el ID del libro a eliminar: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); 
+
+        controller.deleteBook(id);
         System.out.println(" Libro eliminado");
     }
 
