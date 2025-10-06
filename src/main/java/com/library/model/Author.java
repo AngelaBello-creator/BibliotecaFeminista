@@ -1,4 +1,4 @@
-package main.java.com.library.model;
+package com.library.model;
 
 public class Author {
     private Integer id;
