@@ -1,7 +1,7 @@
 package main.java.com.library.controller;
 
-import com.library.model.Book;
-import com.library.dao.BookDAO;
+import main.java.com.library.model.Book;
+import main.java.com.library.dao.BookDao;
 
 import java.util.List;
 
