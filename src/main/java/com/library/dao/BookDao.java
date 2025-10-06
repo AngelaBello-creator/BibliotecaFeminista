@@ -1,7 +1,15 @@
-package main.java.com.library.dao;
+package com.library.dao;
 
-import main.java.com.library.model.Book;
+import com.library.model.Book;
+import java.util.List;
 
 public interface BookDao {
-    public void addBook(Book book);
+    void insert(Book book);
+    List<Book> findAll();
+    Book findById(int id);
+    List<Book> findByTitle(String title);
+    List<Book> findByAuthor(String author);
+    List<Book> findByGenre(String genre);
+    void update(Book book);
+    void delete(int id);
 }

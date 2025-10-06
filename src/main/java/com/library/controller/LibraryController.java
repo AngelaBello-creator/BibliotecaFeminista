@@ -1,62 +1,60 @@
-package main.java.com.library.controller;
+package com.library.controller;
 
-import main.java.com.library.model.Book;
-import main.java.com.library.dao.BookDao;
+import com.library.model.Book;
+import com.library.dao.BookDao;
 
 import java.util.List;
 
 public class LibraryController {
 
-    private final BookDao BookDao;
+    private final BookDao bookDao;
 
-    public LibraryController(BookDao BookDao) {
-        this.BookDao = BookDao;
+    public LibraryController(BookDao bookDao) {
+        this.bookDao = bookDao;
     }
 
     public void addBook(Book book) {
-        BookDao.insert(book);
+        validateBook(book);
+        bookDao.insert(book);
     }
 
     public List<Book> getAllBooks() {
-        return BookDao.findAll();
+        return bookDao.findAll();
     }
 
     public Book getBookById(int id) {
-        return BookDao.findById(id);
+        return bookDao.findById(id);
     }
 
-    public List<Book> searchBooksByTitle(String title) {
-        return BookDao.findByTitle(title);
+    public Book findByTitle(String title) {
+        List<Book> books = bookDao.findByTitle(title);
+        return books.isEmpty() ? null : books.get(0);
     }
 
-    public List<Book> searchBooksByAuthor(String author) {
-        return BookDao.findByAuthor(author);
+    public List<Book> findByAuthor(String author) {
+        return bookDao.findByAuthor(author);
     }
 
-    public List<Book> searchBooksByGenre(String genre) {
-        return BookDao.findByGenre(genre);
+    public List<Book> findByGenre(String genre) {
+        return bookDao.findByGenre(genre);
     }
 
     public void updateBook(Book book) {
-        BookDao.update(book);
+        validateBook(book);
+        bookDao.update(book);
     }
 
     public void deleteBook(int id) {
-        BookDao.delete(id);
+        bookDao.delete(id);
     }
 
     private void validateBook(Book book) {
-    if (book.getTitle() == null || book.getTitle().trim().isEmpty()) {
-        throw new IllegalArgumentException("El título no puede estar vacío.");
+        if (book.getTitle() == null || book.getTitle().trim().isEmpty()) {
+            throw new IllegalArgumentException("El título no puede estar vacío.");
+        }
+        if (book.getIsbn() != null && !book.getIsbn().isEmpty() &&
+            !book.getIsbn().matches("\\d{10,13}")) {
+            throw new IllegalArgumentException("ISBN debe tener entre 10 y 13 dígitos.");
+        }
     }
-    if (book.getIsbn() == null || !book.getIsbn().matches("\\d{10,13}")) {
-        throw new IllegalArgumentException("ISBN debe tener entre 10 y 13 dígitos.");
-    }
-}
-
-public void addBook(Book book) {
-    validateBook(book);
-    BookDao.insert(book);
-}
-
 }

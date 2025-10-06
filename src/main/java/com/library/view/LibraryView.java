@@ -1,8 +1,7 @@
-package main.java.com.library.view;
+package com.library.view;
 
-
-import main.java.com.library.controller.LibraryController;
-import main.java.com.library.model.Book;
+import com.library.controller.LibraryController;
+import com.library.model.Book;
 
 import java.util.List;
 import java.util.Scanner;
@@ -19,9 +18,8 @@ public class LibraryView {
 
     public void start() {
         int option;
-
         do {
-            System.out.println("\n=====  Biblioteca Feminista =====");
+            System.out.println("\n===== Biblioteca Feminista =====");
             System.out.println("1. Ver todos los libros");
             System.out.println("2. Añadir libro");
             System.out.println("3. Editar libro");
@@ -30,10 +28,10 @@ public class LibraryView {
             System.out.println("6. Buscar libros por autor");
             System.out.println("7. Buscar libros por género");
             System.out.println("0. Salir");
-            System.out.print(" Selecciona una opción: ");
+            System.out.print("Selecciona una opción: ");
 
             option = scanner.nextInt();
-            scanner.nextLine(); 
+            scanner.nextLine();
 
             switch (option) {
                 case 1 -> showBooks();
@@ -44,27 +42,20 @@ public class LibraryView {
                 case 6 -> searchByAuthor();
                 case 7 -> searchByGenre();
                 case 0 -> System.out.println("Gracias por usar la Biblioteca Feminista");
-                default -> System.out.println(" Opción no válida");
+                default -> System.out.println("Opción no válida");
             }
-
         } while (option != 0);
+        scanner.close();
     }
 
-private void showBooks() {
-    List<Book> books = controller.getAllBooks();
-    if (books.isEmpty()) {
-        System.out.println("No hay libros registrados.");
-    } else {
-        for (Book b : books) {
-            System.out.println("ID: " + b.getId() +
-                               ", Título: " + b.getTitle() +
-                               ", Autor: " + b.getAuthor() +
-                               ", ISBN: " + (b.getIsbn() != null ? b.getIsbn() : "N/A") +
-                               ", Género: " + b.getGenre());
+    private void showBooks() {
+        List<Book> books = controller.getAllBooks();
+        if (books.isEmpty()) {
+            System.out.println("No hay libros registrados.");
+        } else {
+            books.forEach(b -> System.out.println(b.toString()));
         }
     }
-}
-
 
     private void addBook() {
         System.out.print("Título: ");
@@ -84,29 +75,37 @@ private void showBooks() {
 
         Book book = new Book(title, author, description, isbn, genre);
         controller.addBook(book);
-        System.out.println(" Libro añadido con éxito");
+        System.out.println("Libro añadido con éxito");
     }
 
     private void editBook() {
         System.out.print("Introduce el ID del libro a editar: ");
         int id = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
 
-        System.out.print("Nuevo título: ");
+        Book book = controller.getBookById(id);
+        if (book == null) {
+            System.out.println("Libro no encontrado");
+            return;
+        }
+
+        System.out.print("Nuevo título (actual: " + book.getTitle() + "): ");
         String newTitle = scanner.nextLine();
+        if (!newTitle.isEmpty()) {
+            book.setTitle(newTitle);
+        }
 
-        controller.updateBook(Book);
-        System.out.println(" Libro actualizado");
+        controller.updateBook(book);
+        System.out.println("Libro actualizado");
     }
-
 
     private void deleteBook() {
         System.out.print("Introduce el ID del libro a eliminar: ");
         int id = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
 
         controller.deleteBook(id);
-        System.out.println(" Libro eliminado");
+        System.out.println("Libro eliminado");
     }
 
     private void searchByTitle() {
@@ -114,10 +113,9 @@ private void showBooks() {
         String title = scanner.nextLine();
         Book book = controller.findByTitle(title);
         if (book != null) {
-          
             System.out.println(book.toString());
         } else {
-            System.out.println(" No se encontró ningún libro con ese título");
+            System.out.println("No se encontró ningún libro con ese título");
         }
     }
 
@@ -126,12 +124,9 @@ private void showBooks() {
         String author = scanner.nextLine();
         List<Book> books = controller.findByAuthor(author);
         if (books.isEmpty()) {
-            System.out.println(" No se encontraron libros de ese autor");
+            System.out.println("No se encontraron libros de ese autor");
         } else {
-            for (Book b : books) {
-                
-                System.out.println(b.toString());
-            }
+            books.forEach(b -> System.out.println(b.toString()));
         }
     }
 
@@ -140,15 +135,9 @@ private void showBooks() {
         String genre = scanner.nextLine();
         List<Book> books = controller.findByGenre(genre);
         if (books.isEmpty()) {
-            System.out.println(" No se encontraron libros en ese género");
+            System.out.println("No se encontraron libros en ese género");
         } else {
-            for (Book b : books) {
-               
-                System.out.println("Título: " + b.getTitle() +
-                                   ", Autor: " + b.getAuthor() +
-                                   ", ISBN: " + b.getIsbn() +
-                                   ", Género: " + b.getGenre());
-            }
+            books.forEach(b -> System.out.println(b.toString()));
         }
     }
 }
