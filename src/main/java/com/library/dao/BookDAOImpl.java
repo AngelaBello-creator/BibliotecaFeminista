@@ -7,7 +7,7 @@ import main.java.com.library.dao.DatabaseConnection;
 import main.java.com.library.model.Book;
 
 
-public class BookDAOImpl implements BookDAO {
+public class BookDAOImpl implements BookDao {
     private Connection connection;
     private PreparedStatement stmn;
 
