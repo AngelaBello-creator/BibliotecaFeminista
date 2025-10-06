@@ -1,4 +1,5 @@
 package main.java.com.library.dao;
-public class BookDao {
-    
+
+public interface BookDao {
+    public void createBook(Book book);
 }

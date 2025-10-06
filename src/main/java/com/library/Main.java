@@ -1,7 +1,7 @@
 package com.library;
 
 import com.library.controller.LibraryController;
-import com.library.model.dao.BookDAOImpl;
+import com.library.dao.BookDAOImpl;
 import com.library.view.LibraryView;
 
 public class Main {
