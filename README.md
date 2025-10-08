@@ -40,7 +40,7 @@
 
 
 ## :two_women_holding_hands: Equipo
-- [Ángela Bello](https://github.com/AngelaBello-creator) - Scrum Master and developer
+- [Ángela Bello](https://github.com/AngelaBello-creator) - Scrum Master and developer (https://www.linkedin.com/in/%C3%A1ngela-bello-759a72387/)
 - [Andrea Olivera](https://github.com/andreaonweb) -  Product Owner developer (https://www.linkedin.com/in/andrea-or-0b5310341/)
 - [Montse Muñoz](https://github.com/Montc027) - Developer(https://www.linkedin.com/in/montse-mu%C3%B1oz-ba202b227/)
 - [Mio Ogura](https://github.com/miaryl) - Developer(http://www.linkedin.com/in/mio-ogura-a66880182)
