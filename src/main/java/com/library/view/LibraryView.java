@@ -75,14 +75,12 @@ public class LibraryView {
         String genre = scanner.nextLine();
 
         Book book = new Book(title, author, description, isbn, genre);
-        //controller.addBook(book);
-        //System.out.println("Libro añadido con éxito");
+
         try {
-        controller.addBook(book);
-    } catch (IllegalArgumentException e) {
-        // Only print the error message, no stack trace
-        System.out.println(e.getMessage());
-    }
+            controller.addBook(book);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void editBook() {
@@ -103,7 +101,6 @@ public class LibraryView {
         }
 
         controller.updateBook(book);
-        System.out.println("Libro actualizado");
     }
 
     private void deleteBook() {
@@ -112,7 +109,7 @@ public class LibraryView {
         scanner.nextLine();
 
         controller.deleteBook(id);
-        System.out.println("Libro eliminado");
+
     }
 
     private void searchByTitle() {
