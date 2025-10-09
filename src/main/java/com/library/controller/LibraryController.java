@@ -52,9 +52,18 @@ public class LibraryController {
         if (book.getTitle() == null || book.getTitle().trim().isEmpty()) {
             throw new IllegalArgumentException("El título no puede estar vacío.");
         }
+        if (book.getAuthors().isEmpty() || book.getAuthors().get(0).getName().trim().isEmpty()) {
+        throw new IllegalArgumentException("El autor no puede estar vacío.");
+        }
         if (book.getIsbn() != null && !book.getIsbn().isEmpty() &&
             !book.getIsbn().matches("\\d{10,13}")) {
             throw new IllegalArgumentException("ISBN debe tener entre 10 y 13 dígitos.");
+        }
+        if (book.getDescription() == null || book.getDescription().trim().isEmpty()) {
+        throw new IllegalArgumentException("La descripción no puede estar vacía.");
+        }
+        if (book.getGenres().isEmpty() || book.getGenres().get(0).getName().trim().isEmpty()) {
+        throw new IllegalArgumentException("El género no puede estar vacío.");
         }
     }
 }

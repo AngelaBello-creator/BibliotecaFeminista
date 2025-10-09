@@ -74,8 +74,14 @@ public class LibraryView {
         String genre = scanner.nextLine();
 
         Book book = new Book(title, author, description, isbn, genre);
+        //controller.addBook(book);
+        //System.out.println("Libro añadido con éxito");
+        try {
         controller.addBook(book);
-        System.out.println("Libro añadido con éxito");
+    } catch (IllegalArgumentException e) {
+        // Only print the error message, no stack trace
+        System.out.println(e.getMessage());
+    }
     }
 
     private void editBook() {
