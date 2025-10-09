@@ -8,3 +8,5 @@ database.properties
 target/
 build/
 out/
+
+.vscode/
