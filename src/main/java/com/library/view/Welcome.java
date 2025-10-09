@@ -1,33 +1,33 @@
 package com.library.view;
 
+import static com.library.util.ConsoleColor.*;
+
 public class Welcome {
 
-    private static final String PURPLE = "\u001B[35m";
-    private static final String CYAN = "\u001B[36m";
-    private static final String RESET = "\u001B[0m";
+ 
 
     public static void show() {
         System.out.println("\n");
-        System.out.println(CYAN + ">>> INICIALIZANDO SISTEMA DE LA BIBLIOTECA FEMINISTA..." + RESET);
+        System.out.println(cyan (">>> INICIALIZANDO SISTEMA DE LA BIBLIOTECA FEMINISTA..."));
         sleep(500);
 
         
         for (int i = 0; i <= 10; i++) {
             String barra = "=".repeat(i) + " ".repeat(10 - i);
-            System.out.print(PURPLE + "\r[ " + barra + " ] " + (i * 10) + "% " + RESET);
+            System.out.print(purple("\r[ " + barra + " ] " + (i * 10) + "% "));
             sleep(200);
         }
 
         System.out.println("\n");
         sleep(400);
-        System.out.println(CYAN + "> Cargando archivos digitales..." + RESET);
+        System.out.println(cyan("> Cargando archivos digitales..." ));
         sleep(600);
-        System.out.println(CYAN + "> Descifrando narrativas feministas..." + RESET);
+        System.out.println(cyan("> Descifrando narrativas feministas..." ));
         sleep(600);
-        System.out.println(CYAN + "> Subiendo módulos de conocimiento..." + RESET);
+        System.out.println(cyan("> Subiendo módulos de conocimiento..."));
         sleep(600);
-        System.out.println(PURPLE + "> Sistema listo. Bienvenida, lectora." + RESET);
-        System.out.println("\n" + CYAN + "  Comienza tu lectura." + RESET + "\n");
+        System.out.println(purple("> Sistema listo. Bienvenida, lectora." ));
+        System.out.println("\n" + (cyan("  Comienza tu lectura." + "\n")));
     }
 
     private static void sleep(int ms) {

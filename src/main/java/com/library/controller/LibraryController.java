@@ -1,7 +1,9 @@
 package com.library.controller;
 
 import com.library.model.Book;
+// import com.library.dao.BookDAOImpl.ConsoleColor;
 import com.library.dao.BookDao;
+import static com.library.util.ConsoleColor.*;
 
 import java.util.List;
 
@@ -50,11 +52,11 @@ public class LibraryController {
 
     private void validateBook(Book book) {
         if (book.getTitle() == null || book.getTitle().trim().isEmpty()) {
-            throw new IllegalArgumentException("El título no puede estar vacío.");
+            throw new IllegalArgumentException(red("El título no puede estar vacío."));
         }
         if (book.getIsbn() != null && !book.getIsbn().isEmpty() &&
             !book.getIsbn().matches("\\d{10,13}")) {
-            throw new IllegalArgumentException("ISBN debe tener entre 10 y 13 dígitos.");
+            throw new IllegalArgumentException(red("ISBN debe tener entre 10 y 13 dígitos."));
         }
     }
 }

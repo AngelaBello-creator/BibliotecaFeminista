@@ -3,6 +3,7 @@ package com.library.dao;
 import com.library.model.Book;
 import com.library.model.Author;
 import com.library.model.Genre;
+import static com.library.util.ConsoleColor.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,10 +26,11 @@ public class BookDAOImpl implements BookDao {
             stmt.setString(5, book.getGenresAsString());
 
             stmt.executeUpdate();
-            System.out.println(book.getTitle() + " ha sido añadido con éxito");
+            System.out.println(green(book.getTitle() + " ha sido añadido con éxito"));
         } catch (Exception e) {
-            System.out.println("Error al crear libro: " + e.getMessage());
+            System.out.println(red("Error al crear libro: " + e.getMessage()));
         } finally {
+            
             closeResources(connection, stmt, null);
         }
     }
@@ -45,7 +47,7 @@ public class BookDAOImpl implements BookDao {
                 books.add(mapResultSetToBook(rs));
             }
         } catch (Exception e) {
-            System.out.println("Error al obtener libros: " + e.getMessage());
+            System.out.println(red("Error al obtener libros: " + e.getMessage()));
         }
         return books;
     }
@@ -63,7 +65,7 @@ public class BookDAOImpl implements BookDao {
                     book = mapResultSetToBook(rs);
             }
         } catch (Exception e) {
-            System.out.println("Error al buscar libro por ID: " + e.getMessage());
+            System.out.println(red("Error al buscar libro por ID: " + e.getMessage()));
         }
         return book;
     }
@@ -95,7 +97,7 @@ public class BookDAOImpl implements BookDao {
                     books.add(mapResultSetToBook(rs));
             }
         } catch (Exception e) {
-            System.out.println("Error al buscar por " + field + ": " + e.getMessage());
+            System.out.println(red("Error al buscar por " + field + ": " + e.getMessage()));
         }
         return books;
     }
@@ -114,9 +116,9 @@ public class BookDAOImpl implements BookDao {
             stmt.setInt(6, book.getId());
 
             stmt.executeUpdate();
-            System.out.println("Libro actualizado con éxito");
+            System.out.println(green("Libro actualizado con éxito"));
         } catch (Exception e) {
-            System.out.println("Error al actualizar libro: " + e.getMessage());
+            System.out.println(red("Error al actualizar libro: " + e.getMessage()));
         }
     }
 
@@ -128,9 +130,9 @@ public class BookDAOImpl implements BookDao {
 
             stmt.setInt(1, id);
             stmt.executeUpdate();
-            System.out.println("Libro eliminado con éxito");
+            System.out.println(green("Libro eliminado con éxito"));
         } catch (Exception e) {
-            System.out.println("Error al eliminar libro: " + e.getMessage());
+            System.out.println(red("Error al eliminar libro: " + e.getMessage()));
         }
     }
 
@@ -160,7 +162,7 @@ public class BookDAOImpl implements BookDao {
             if (connection != null)
                 connection.close();
         } catch (SQLException e) {
-            System.out.println("Error al cerrar conexión: " + e.getMessage());
+            System.out.println(red("Error al cerrar conexión: " + e.getMessage()));
         }
     }
 }
