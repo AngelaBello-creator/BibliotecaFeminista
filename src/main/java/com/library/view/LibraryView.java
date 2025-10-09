@@ -2,6 +2,7 @@ package com.library.view;
 
 import com.library.controller.LibraryController;
 import com.library.model.Book;
+import static com.library.util.ConsoleColor.*;
 
 import java.util.List;
 import java.util.Scanner;
@@ -19,7 +20,7 @@ public class LibraryView {
     public void start() {
         int option;
         do {
-            System.out.println("\n===== Biblioteca Feminista =====");
+            System.out.println(blue("\n===== Biblioteca Feminista ====="));
             System.out.println("1. Ver todos los libros");
             System.out.println("2. Añadir libro");
             System.out.println("3. Editar libro");

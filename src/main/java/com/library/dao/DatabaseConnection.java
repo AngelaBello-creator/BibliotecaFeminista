@@ -1,10 +1,14 @@
 package com.library.dao;
 
+import static com.library.util.ConsoleColor.red;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
+
+// import com.library.dao.BookDAOImpl.ConsoleColor;
 
 public class DatabaseConnection {
     private static String URL;
@@ -18,7 +22,7 @@ public class DatabaseConnection {
                     .getResourceAsStream("database.properties");
 
             if (input == null) {
-                System.out.println("No se pudo encontrar database.properties");
+                System.out.println(red("No se pudo encontrar database.properties"));
             } else {
                 props.load(input);
                 URL = props.getProperty("db.url");
@@ -26,7 +30,7 @@ public class DatabaseConnection {
                 PASS = props.getProperty("db.password");
             }
         } catch (IOException e) {
-            System.out.println("Error al cargar configuración: " + e.getMessage());
+            System.out.println(red("Error al cargar configuración: " + e.getMessage()));
         }
     }
 
@@ -35,7 +39,7 @@ public class DatabaseConnection {
         try {
             connection = DriverManager.getConnection(URL, USER, PASS);
         } catch (Exception e) {
-            System.out.println("Error al conectar: " + e.getMessage());
+            System.out.println(red("Error al conectar: " + e.getMessage()));
         }
         return connection;
     }
