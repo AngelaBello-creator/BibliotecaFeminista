@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.library.controller.LibraryControllerTest" time="1.794" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.library.controller.LibraryControllerTest" time="1.705" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="ES"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\larri\AppData\Local\Temp\surefire4500053653392279819\surefirebooter-20251009120540401_3.jar C:\Users\larri\AppData\Local\Temp\surefire4500053653392279819 2025-10-09T12-05-40_151-jvmRun1 surefire-20251009120540401_1tmp surefire_0-20251009120540401_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\larri\AppData\Local\Temp\surefire17590070008888800741\surefirebooter-20251009121111790_3.jar C:\Users\larri\AppData\Local\Temp\surefire17590070008888800741 2025-10-09T12-11-11_581-jvmRun1 surefire-20251009121111790_1tmp surefire_0-20251009121111790_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\larri\Desktop\BibliotecaFeminista\target\test-classes;C:\Users\larri\Desktop\BibliotecaFeminista\target\classes;C:\Users\larri\.m2\repository\org\junit\jupiter\junit-jupiter\5.11.0\junit-jupiter-5.11.0.jar;C:\Users\larri\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.0\junit-jupiter-api-5.11.0.jar;C:\Users\larri\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\larri\.m2\repository\org\junit\platform\junit-platform-commons\1.11.0\junit-platform-commons-1.11.0.jar;C:\Users\larri\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\larri\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.0\junit-jupiter-params-5.11.0.jar;C:\Users\larri\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.0\junit-jupiter-engine-5.11.0.jar;C:\Users\larri\.m2\repository\org\junit\platform\junit-platform-engine\1.11.0\junit-platform-engine-1.11.0.jar;C:\Users\larri\.m2\repository\org\mockito\mockito-core\5.13.0\mockito-core-5.13.0.jar;C:\Users\larri\.m2\repository\net\bytebuddy\byte-buddy\1.15.0\byte-buddy-1.15.0.jar;C:\Users\larri\.m2\repository\net\bytebuddy\byte-buddy-agent\1.15.0\byte-buddy-agent-1.15.0.jar;C:\Users\larri\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\larri\.m2\repository\org\postgresql\postgresql\42.7.8\postgresql-42.7.8.jar;C:\Users\larri\.m2\repository\org\checkerframework\checker-qual\3.49.5\checker-qual-3.49.5.jar;C:\Users\larri\.m2\repository\io\github\cdimascio\dotenv-java\3.2.0\dotenv-java-3.2.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\larri\AppData\Local\Temp\surefire4500053653392279819\surefirebooter-20251009120540401_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\larri\AppData\Local\Temp\surefire17590070008888800741\surefirebooter-20251009121111790_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.8+12-LTS-250"/>
@@ -58,12 +58,12 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="addBook_callsInsertOnDao" classname="com.library.controller.LibraryControllerTest" time="1.728">
+  <testcase name="addBook_callsInsertOnDao" classname="com.library.controller.LibraryControllerTest" time="1.634">
     <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\larri\.m2\repository\net\bytebuddy\byte-buddy-agent\1.15.0\byte-buddy-agent-1.15.0.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
 WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
 WARNING: Dynamic loading of agents will be disallowed by default in a future release
 ]]></system-err>
   </testcase>
-  <testcase name="addBook_throwsExceptionIfTitleEmpty" classname="com.library.controller.LibraryControllerTest" time="0.02"/>
+  <testcase name="addBook_throwsExceptionIfTitleEmpty" classname="com.library.controller.LibraryControllerTest" time="0.018"/>
 </testsuite>
