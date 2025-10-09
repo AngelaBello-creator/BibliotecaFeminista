@@ -38,8 +38,8 @@ public class BookDAOImpl implements BookDao {
         List<Book> books = new ArrayList<>();
         String sql = "SELECT * FROM books";
         try (Connection connection = DatabaseConnection.init();
-             PreparedStatement stmt = connection.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+                PreparedStatement stmt = connection.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
                 books.add(mapResultSetToBook(rs));
@@ -55,11 +55,12 @@ public class BookDAOImpl implements BookDao {
         Book book = null;
         String sql = "SELECT * FROM books WHERE id = ?";
         try (Connection connection = DatabaseConnection.init();
-             PreparedStatement stmt = connection.prepareStatement(sql)) {
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) book = mapResultSetToBook(rs);
+                if (rs.next())
+                    book = mapResultSetToBook(rs);
             }
         } catch (Exception e) {
             System.out.println("Error al buscar libro por ID: " + e.getMessage());
@@ -86,11 +87,12 @@ public class BookDAOImpl implements BookDao {
         List<Book> books = new ArrayList<>();
         String sql = "SELECT * FROM books WHERE " + field + " ILIKE ?";
         try (Connection connection = DatabaseConnection.init();
-             PreparedStatement stmt = connection.prepareStatement(sql)) {
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
 
             stmt.setString(1, "%" + value + "%");
             try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) books.add(mapResultSetToBook(rs));
+                while (rs.next())
+                    books.add(mapResultSetToBook(rs));
             }
         } catch (Exception e) {
             System.out.println("Error al buscar por " + field + ": " + e.getMessage());
@@ -102,7 +104,7 @@ public class BookDAOImpl implements BookDao {
     public void update(Book book) {
         String sql = "UPDATE books SET title=?, author=?, description=?, isbn=?, genre=? WHERE id=?";
         try (Connection connection = DatabaseConnection.init();
-             PreparedStatement stmt = connection.prepareStatement(sql)) {
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
 
             stmt.setString(1, book.getTitle());
             stmt.setString(2, book.getAuthorsAsString());
@@ -122,7 +124,7 @@ public class BookDAOImpl implements BookDao {
     public void delete(int id) {
         String sql = "DELETE FROM books WHERE id = ?";
         try (Connection connection = DatabaseConnection.init();
-             PreparedStatement stmt = connection.prepareStatement(sql)) {
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
             stmt.executeUpdate();
@@ -134,11 +136,10 @@ public class BookDAOImpl implements BookDao {
 
     private Book mapResultSetToBook(ResultSet rs) throws SQLException {
         Book book = new Book(
-            rs.getInt("id"),
-            rs.getString("title"),
-            rs.getString("isbn"),
-            rs.getString("description")
-        );
+                rs.getInt("id"),
+                rs.getString("title"),
+                rs.getString("isbn"),
+                rs.getString("description"));
         String authorName = rs.getString("author");
         if (authorName != null && !authorName.isEmpty()) {
             book.addAuthor(new Author(authorName));
@@ -152,9 +153,12 @@ public class BookDAOImpl implements BookDao {
 
     private void closeResources(Connection connection, Statement stmt, ResultSet rs) {
         try {
-            if (rs != null) rs.close();
-            if (stmt != null) stmt.close();
-            if (connection != null) connection.close();
+            if (rs != null)
+                rs.close();
+            if (stmt != null)
+                stmt.close();
+            if (connection != null)
+                connection.close();
         } catch (SQLException e) {
             System.out.println("Error al cerrar conexión: " + e.getMessage());
         }
