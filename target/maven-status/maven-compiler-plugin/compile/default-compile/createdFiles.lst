@@ -1,9 +1,0 @@
-com\library\dao\BookDAOImpl.class
-com\library\model\Book.class
-com\library\model\Author.class
-com\library\Main.class
-com\library\controller\LibraryController.class
-com\library\dao\BookDao.class
-com\library\dao\DatabaseConnection.class
-com\library\model\Genre.class
-com\library\view\LibraryView.class

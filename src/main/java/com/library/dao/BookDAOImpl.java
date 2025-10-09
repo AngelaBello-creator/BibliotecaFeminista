@@ -84,7 +84,7 @@ public class BookDAOImpl implements BookDao {
 
     private List<Book> findByField(String field, String value) {
         List<Book> books = new ArrayList<>();
-        String sql = "SELECT * FROM books WHERE " + field + " LIKE ?";
+        String sql = "SELECT * FROM books WHERE " + field + " ILIKE ?";
         try (Connection connection = DatabaseConnection.init();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
 
