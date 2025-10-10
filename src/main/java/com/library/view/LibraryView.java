@@ -42,8 +42,8 @@ public class LibraryView {
                 case 5 -> searchByTitle();
                 case 6 -> searchByAuthor();
                 case 7 -> searchByGenre();
-                case 0 -> System.out.println("Gracias por usar la Biblioteca Feminista");
-                default -> System.out.println("Opción no válida");
+                case 0 -> System.out.println(magenta("Gracias por usar la Biblioteca Feminista"));
+                default -> System.out.println(red("Opción no válida"));
             }
         } while (option != 0);
         scanner.close();
@@ -52,7 +52,7 @@ public class LibraryView {
     private void showBooks() {
         List<Book> books = controller.getAllBooks();
         if (books.isEmpty()) {
-            System.out.println("No hay libros registrados.");
+            System.out.println(red("No hay libros registrados."));
         } else {
             books.forEach(b -> System.out.println(b.toString()));
         }
@@ -75,71 +75,68 @@ public class LibraryView {
         String genre = scanner.nextLine();
 
         Book book = new Book(title, author, description, isbn, genre);
-
-        try {
-            controller.addBook(book);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        controller.addBook(book);
+        System.out.println("Libro añadido con éxito");
     }
 
     private void editBook() {
-        System.out.print("Introduce el ID del libro a editar: ");
+        System.out.print(cyan("Introduce el ID del libro a editar: "));
         int id = scanner.nextInt();
         scanner.nextLine();
 
         Book book = controller.getBookById(id);
         if (book == null) {
-            System.out.println("Libro no encontrado");
+            System.out.println(red("Libro no encontrado"));
             return;
         }
 
-        System.out.print("Nuevo título (actual: " + book.getTitle() + "): ");
+        System.out.print(magenta("Nuevo título (actual: " + book.getTitle() + "): "));
         String newTitle = scanner.nextLine();
         if (!newTitle.isEmpty()) {
             book.setTitle(newTitle);
         }
 
         controller.updateBook(book);
+        System.out.println("Libro actualizado");
     }
 
     private void deleteBook() {
-        System.out.print("Introduce el ID del libro a eliminar: ");
+        System.out.print(cyan("Introduce el ID del libro a eliminar: "));
         int id = scanner.nextInt();
         scanner.nextLine();
 
         controller.deleteBook(id);
-
+        System.out.println("Libro eliminado");
     }
 
     private void searchByTitle() {
-        System.out.print("Introduce título: ");
+        System.out.print(cyan("Introduce título: "));
         String title = scanner.nextLine();
         Book book = controller.findByTitle(title);
         if (book != null) {
             System.out.println(book.toString());
         } else {
-            System.out.println("No se encontró ningún libro con ese título");
+            System.out.println(red("No se encontró ningún libro con ese título"));
         }
     }
 
     private void searchByAuthor() {
-        System.out.print("Introduce autor: ");
+        System.out.print(cyan("Introduce autor: "));
         String author = scanner.nextLine();
         List<Book> books = controller.findByAuthor(author);
         if (books.isEmpty()) {
-            System.out.println("No se encontraron libros de ese autor");
+            System.out.println(red("No se encontraron libros de ese autor"));
         } else {
             books.forEach(b -> System.out.println(b.toString()));
         }
     }
 
     private void searchByGenre() {
-        System.out.print("Introduce género: ");
+        System.out.print(cyan("Introduce género: "));
         String genre = scanner.nextLine();
         List<Book> books = controller.findByGenre(genre);
         if (books.isEmpty()) {
-            System.out.println("No se encontraron libros en ese género");
+            System.out.println(red("No se encontraron libros en ese género"));
         } else {
             books.forEach(b -> System.out.println(b.toString()));
         }
