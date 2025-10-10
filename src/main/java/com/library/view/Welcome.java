@@ -14,7 +14,7 @@ public class Welcome {
         
         for (int i = 0; i <= 10; i++) {
             String barra = "=".repeat(i) + " ".repeat(10 - i);
-            System.out.print(purple("\r[ " + barra + " ] " + (i * 10) + "% "));
+            System.out.print(magenta("\r[ " + barra + " ] " + (i * 10) + "% "));
             sleep(200);
         }
 
@@ -26,7 +26,7 @@ public class Welcome {
         sleep(600);
         System.out.println(cyan("> Subiendo módulos de conocimiento..."));
         sleep(600);
-        System.out.println(purple("> Sistema listo. Bienvenida, lectora." ));
+        System.out.println(magenta("> Sistema listo. Bienvenida, lectora." ));
         System.out.println("\n" + (cyan("  Comienza tu lectura." + "\n")));
     }
 
