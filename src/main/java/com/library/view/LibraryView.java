@@ -21,14 +21,14 @@ public class LibraryView {
         int option;
         do {
             System.out.println(blue("\n===== Biblioteca Feminista ====="));
-            System.out.println("1. Ver todos los libros");
-            System.out.println("2. Añadir libro");
-            System.out.println("3. Editar libro");
-            System.out.println("4. Eliminar libro");
-            System.out.println("5. Buscar libro por título");
-            System.out.println("6. Buscar libros por autor");
-            System.out.println("7. Buscar libros por género");
-            System.out.println("0. Salir");
+            System.out.println("\n1. Ver todos los libros \n");
+            System.out.println("2. Añadir libro\n");
+            System.out.println("3. Editar libro\n");
+            System.out.println("4. Eliminar libro\n");
+            System.out.println("5. Buscar libro por título\n");
+            System.out.println("6. Buscar libros por autor\n");
+            System.out.println("7. Buscar libros por género\n");
+            System.out.println("0. Salir\n");
             System.out.print("Selecciona una opción: ");
 
             option = scanner.nextInt();
