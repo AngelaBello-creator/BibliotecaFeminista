@@ -17,7 +17,7 @@ public class Author {
         this.name = name;
     }
 
-    // Getters y Setters
+
     public int getId() {
         return id;
     }

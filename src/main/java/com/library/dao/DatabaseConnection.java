@@ -8,8 +8,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
 
-// import com.library.dao.BookDAOImpl.ConsoleColor;
-
 public class DatabaseConnection {
     private static String URL;
     private static String USER;

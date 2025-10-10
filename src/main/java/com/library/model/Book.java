@@ -17,7 +17,7 @@ public class Book {
         this.genres = new ArrayList<>();
     }
 
-    // Constructor sin ID (para insertar)
+
     public Book(String title, String authorName, String description, String isbn, String genreName) {
         this();
         this.title = title;
@@ -27,7 +27,7 @@ public class Book {
         this.addGenre(new Genre(genreName));
     }
 
-    // Constructor con ID (para leer desde BD)
+
     public Book(int id, String title, String isbn, String description) {
         this();
         this.id = id;
@@ -36,7 +36,7 @@ public class Book {
         this.description = description;
     }
 
-    // Métodos para manejar listas
+
     public void addAuthor(Author author) {
         this.authors.add(author);
     }
@@ -63,7 +63,6 @@ public class Book {
         return sb.substring(0, sb.length() - 2);
     }
 
-    // Getters y Setters
     public int getId() {
         return id;
     }
@@ -106,12 +105,15 @@ public class Book {
 
     @Override
     public String toString() {
-        return "ID: " + id +
+        String cleanDescription = description != null ? 
+            description.replaceAll("\\s+", " ").trim() : "";
+        
+        return "\nID: " + id +
                 "\nTítulo: " + title +
                 "\nAutores: " + getAuthorsAsString() +
                 "\nGéneros: " + getGenresAsString() +
                 "\nISBN: " + isbn +
-                "\nDescripción: " + description +
+                "\nDescripción: " + cleanDescription +
                 "\n----------------------------";
     }
 }

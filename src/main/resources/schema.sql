@@ -27,7 +27,7 @@ INSERT INTO books (id, title, author, isbn, description, genre) VALUES
  'A sweeping history of humankind, tracing our evolution from early hominids to the modern age, and exploring how biology, culture, and imagination have together shaped human societies.',
  'Non-fiction, History, Anthropology, Philosophy'),
 
-(5, 'Man’s Search for Meaning', 'Viktor E. Frankl', '9788420672093',
+(5, 'Mans Search for Meaning', 'Viktor E. Frankl', '9788420672093',
  'Viktor Frankl recounts his experiences in Nazi concentration camps and how they inspired logotherapy, a psychological approach emphasizing the pursuit of meaning as humanity’s central drive.',
  'Non-fiction, Psychology, Philosophy'),
 

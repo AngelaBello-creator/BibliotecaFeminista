@@ -26,7 +26,6 @@ public class BookDAOImpl implements BookDao {
             stmt.setString(5, book.getGenresAsString());
 
             stmt.executeUpdate();
-            System.out.println(green(book.getTitle() + " ha sido añadido con éxito"));
         } catch (Exception e) {
             System.out.println(red("Error al crear libro: " + e.getMessage()));
         } finally {
@@ -130,7 +129,6 @@ public class BookDAOImpl implements BookDao {
 
             stmt.setInt(1, id);
             stmt.executeUpdate();
-            System.out.println(green("Libro eliminado con éxito"));
         } catch (Exception e) {
             System.out.println(red("Error al eliminar libro: " + e.getMessage()));
         }
