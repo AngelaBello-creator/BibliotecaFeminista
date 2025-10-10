@@ -1,0 +1,10 @@
+.env
+database.properties
+
+# Ignore compiled Java classes
+*.class
+
+# Ignore build output directories
+target/
+build/
+out/
